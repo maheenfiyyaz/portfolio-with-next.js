@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 
-export const dynamic = 'force-dynamic'; // ✅ ensures Vercel always rebuilds route
+export const runtime = 'nodejs';       // ✅ added
+export const dynamic = 'force-dynamic'; // ✅ added
 
 export async function POST(req) {
   try {
