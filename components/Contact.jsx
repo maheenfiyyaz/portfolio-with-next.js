@@ -54,7 +54,7 @@ export default function Contact() {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
         Contact <span className="text-blue-500">Me</span>
       </h2>
-
+      {/* Forced Change */}
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto grid gap-6">
 
 
