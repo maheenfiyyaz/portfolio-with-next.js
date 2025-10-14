@@ -3,10 +3,11 @@ import nodemailer from "nodemailer";
 export async function POST(req) {
   try {
     const data = await req.json();
-    console.log('Incoming Form Data:', data);
 
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -15,7 +16,6 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      replyTo: data.email,
       to: process.env.RECEIVER_EMAIL,
       subject: `New Contact Request: ${data.projectType}`,
       text: `
