@@ -27,36 +27,40 @@ export default function Contact() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
       });
-
       if (res.ok) {
         setStatus('Message sent — thanks!');
-        setForm({
-          fullName: '',
-          email: '',
-          phone: '',
-          projectType: '',
-          language: '',
-          budget: '',
-          message: '',
-        });
+        setForm({ fullName: '', email: '', phone: '', projectType: '', language: '', budget: '', message: '' });
       } else {
         setStatus('Failed to send (server).');
       }
-    } catch (err) {
+    } catch {
       setStatus('Network error.');
     }
   }
 
-  return (
-    <section id="contact" className="py-24 px-8 bg-[var(--second-bg-color)] text-white">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-        Contact <span className="text-blue-500">Me</span>
-      </h2>
-      {/* Forced Change */}
-      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto grid gap-6">
+  const inputClass =
+    "w-full p-4 rounded-lg bg-[#0F172A] border border-[#6FA3B840] placeholder-[#9ED0E0]/60 text-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#9ED0E0] focus:border-transparent transition";
 
+  const selectClass =
+    "w-full p-4 rounded-lg bg-[#0F172A] border border-[#6FA3B840] text-[#F8FAFC]/80 focus:outline-none focus:ring-2 focus:ring-[#9ED0E0] focus:border-transparent transition";
+
+  return (
+    <section id="contact" className="py-24 px-8 bg-[#0F172A] text-[#F8FAFC]">
+
+      <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        Contact{' '}
+        <span className="bg-gradient-to-r from-[#6FA3B8] via-[#9ED0E0] to-[#F8FAFC] bg-clip-text text-transparent">
+          Me
+        </span>
+      </h2>
+
+      <p className="text-[#9ED0E0] text-center text-lg mb-14">
+        Got a project in mind? Let’s build something great together.
+      </p>
+
+      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto grid gap-6">
 
         <div className="flex flex-col md:flex-row gap-4">
           <input
@@ -64,19 +68,16 @@ export default function Contact() {
             value={form.fullName}
             onChange={handleChange}
             placeholder="Full Name *"
-
-            className="w-full md:flex-1 p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={inputClass}
           />
           <input
             name="email"
             value={form.email}
             onChange={handleChange}
             placeholder="Email Address *"
-
-            className="w-full md:flex-1 p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={inputClass}
           />
         </div>
-
 
         <div className="flex flex-col md:flex-row gap-4">
           <input
@@ -84,89 +85,81 @@ export default function Contact() {
             value={form.phone}
             onChange={handleChange}
             placeholder="Phone Number"
-
-            className="w-full md:flex-1 p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={inputClass}
           />
-          <select
-            name="projectType"
-            value={form.projectType}
-            onChange={handleChange}
 
-            className="w-full md:flex-1 p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
+          <select name="projectType" value={form.projectType} onChange={handleChange} className={selectClass}>
             <option value="">Select Project Type *</option>
+            <option disabled>── Development ──</option>
             <option value="Personal Website">Personal Website</option>
             <option value="Business Website">Business Website</option>
             <option value="E-commerce / Online Store">E-commerce / Online Store</option>
-            <option value="Portfolio / Resume Website">Portfolio / Resume Website</option>
-            <option value="Other">Other</option>
+            <option value="Portfolio Website">Portfolio Website</option>
+            <option value="MERN Stack App">MERN Stack App</option>
+
+            <option disabled>── Graphic Design ──</option>
+            <option value="Logo & Brand Identity">Logo & Brand Identity</option>
+            <option value="Social Media Design">Social Media Design</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+            <option value="Poster / Flyer Design">Poster / Flyer Design</option>
+            <option value="Other Design Work">Other Design Work</option>
           </select>
         </div>
-
 
         <div className="flex flex-col md:flex-row gap-4">
-          <select
-            name="language"
-            value={form.language}
-            onChange={handleChange}
-
-            className="w-full md:flex-1 p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Preferred Technology / Language *</option>
+          <select name="language" value={form.language} onChange={handleChange} className={selectClass}>
+            <option value="">Service / Technology *</option>
+            <option disabled>── Development ──</option>
             <option value="HTML, CSS, JS">HTML, CSS, JS</option>
-            <option value="React / React Native">React / React Native</option>
-            <option value="Next.js">Next.js</option>
+            <option value="React / Next.js">React / Next.js</option>
             <option value="MERN Stack">MERN Stack</option>
-            <option value="WordPress / Digital Marketing">WordPress / Digital Marketing</option>
+
+            <option disabled>── Design ──</option>
+            <option value="Adobe Illustrator">Adobe Illustrator</option>
+            <option value="Adobe Photoshop">Adobe Photoshop</option>
+            <option value="Figma (UI/UX)">Figma (UI/UX)</option>
+            <option value="Canva">Canva</option>
           </select>
 
-          <select
-            name="budget"
-            value={form.budget}
-            onChange={handleChange}
-
-            className="w-full md:flex-1 p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
+          <select name="budget" value={form.budget} onChange={handleChange} className={selectClass}>
             <option value="">Budget Range *</option>
 
+            <option disabled>── Development ──</option>
+            <option value="$20 - $50">$20 – $50 (Basic)</option>
+            <option value="$50 - $100">$50 – $100 (Business Website)</option>
+            <option value="$80 - $150">$80 – $150 (React / Next.js)</option>
+            <option value="$120 - $250">$120 – $250 (E-commerce)</option>
+            <option value="$200 - $400">$200 – $400 (MERN App)</option>
 
-            <option value="$20 - $50">$20 - $50 (Portfolio / Resume - Basic)</option>
-            <option value="$30 - $70">$30 - $70 (Personal Website - Simple)</option>
-
-
-            <option value="$50 - $100">$50 - $100 (Business Website - Basic)</option>
-            <option value="$80 - $150">$80 - $150 (Business Website - React/Next.js)</option>
-
-
-            <option value="$80 - $150">$80 - $150 (E-commerce - Basic Store)</option>
-            <option value="$120 - $250">$120 - $250 (E-commerce - React/Next.js)</option>
-            <option value="$200 - $400">$200 - $400 (E-commerce - MERN Stack)</option>
-
-
-            <option value="$30 - $300">$30 - $300 (Custom Project - Depends)</option>
+            <option disabled>── Graphic Design ──</option>
+            <option value="$10 - $30">$10 – $30 (Logo)</option>
+            <option value="$30 - $80">$30 – $80 (Brand Identity)</option>
+            <option value="$20 - $60">$20 – $60 (Social Media)</option>
+            <option value="$50 - $150">$50 – $150 (UI/UX)</option>
+            <option value="Custom">Custom / Let’s Talk</option>
           </select>
         </div>
-
 
         <textarea
           name="message"
           value={form.message}
           onChange={handleChange}
-          placeholder="Your Message"
+          placeholder="Tell me about your project..."
           rows="6"
-          className="p-4 rounded-lg bg-[var(--bg-color)] border border-blue-500 placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></textarea>
-
+          className={inputClass}
+        />
 
         <button
           type="submit"
-          className="self-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-900 via-sky-600 to-blue-400 text-white font-semibold hover:scale-105 transition duration-300"
+          className="self-center px-10 py-3 rounded-full bg-[#6FA3B8] text-white font-semibold
+          hover:bg-[#88bfd6] hover:shadow-[0_0_25px_#6FA3B880] hover:scale-105 transition"
         >
-          Submit
+          Send Message
         </button>
 
-
-        {status && <p className="text-center mt-2 text-blue-300">{status}</p>}
+        {status && (
+          <p className="text-center mt-2 text-[#9ED0E0]">{status}</p>
+        )}
       </form>
     </section>
   );

@@ -1,12 +1,14 @@
 export default function Footer() {
   return (
-    <footer className="py-8 bg-[var(--bg-color)] text-center">
+    <footer className="py-8 bg-[#0F172A] text-center text-[#F8FAFC]">
+
       <div className="flex justify-center gap-6 mb-4">
 
+        {/* LinkedIn */}
         <a
           href="https://www.linkedin.com/in/maheen-fayyaz-03485a2ab"
-          className="text-blue-400 text-3xl p-2 rounded-full 
-                     hover:text-blue-400 hover:shadow-[0_0_20px_#3b82f6] 
+          className="text-[#9ED0E0] text-3xl p-2 rounded-full 
+                     hover:text-[#F8FAFC] hover:shadow-[0_0_20px_#6FA3B880] 
                      transform hover:scale-110 hover:-rotate-3 transition duration-300"
         >
           <i className="bx bxl-linkedin-square"></i>
@@ -15,8 +17,8 @@ export default function Footer() {
         {/* GitHub */}
         <a
           href="https://github.com/maheenfiyyaz"
-          className="text-blue-400 text-3xl p-2 rounded-full 
-                     hover:text-blue-400 hover:shadow-[0_0_20px_#3b82f6] 
+          className="text-[#9ED0E0] text-3xl p-2 rounded-full 
+                     hover:text-[#F8FAFC] hover:shadow-[0_0_20px_#6FA3B880] 
                      transform hover:scale-110 hover:rotate-3 transition duration-300"
         >
           <i className="bx bxl-github"></i>
@@ -25,14 +27,28 @@ export default function Footer() {
         {/* Instagram */}
         <a
           href="https://www.instagram.com/syeda_maheen_fayyaz/profilecard/"
-          className="text-blue-400 text-3xl p-2 rounded-full 
-                     hover:text-blue-400 hover:shadow-[0_0_20px_#3b82f6] 
+          className="text-[#9ED0E0] text-3xl p-2 rounded-full 
+                     hover:text-[#F8FAFC] hover:shadow-[0_0_20px_#6FA3B880] 
                      transform hover:scale-110 hover:-rotate-3 transition duration-300"
         >
           <i className="bx bxl-instagram-alt"></i>
         </a>
+
+        {/* Behance */}
+        <a
+          href="https://www.behance.net/maheenfayyaz"
+          className="text-[#9ED0E0] text-3xl p-2 rounded-full 
+                     hover:text-[#F8FAFC] hover:shadow-[0_0_20px_#6FA3B880] 
+                     transform hover:scale-110 hover:rotate-3 transition duration-300"
+        >
+          <i className="bx bxl-behance"></i>
+        </a>
+
       </div>
-      <p className="text-blue-500">&copy; Maheen Fayyaz | All Rights Reserved</p>
+
+      <p className="text-[#9ED0E0] text-sm">
+        © Maheen Fayyaz | All Rights Reserved
+      </p>
     </footer>
   );
 }
