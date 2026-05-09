@@ -56,7 +56,7 @@ export default function Header() {
           className="md:hidden text-3xl text-[#9ED0E0]"
           onClick={() => setOpen(!open)}
         >
-          <i className={`bx ${open ? 'bx-x' : 'bx-menu'}`}></i>
+          <i className={`bx ${open ? 'bx-x' : 'bx-menu'}`}> </i>
         </button>
       </div>
     </header>
